@@ -39,7 +39,10 @@ const NextPrayerLayout = ({ style }) =>
     return (
     <NextPrayerContainer style={style}>
         <NextPrayerView style={styles.nextPrayerViewS}>
-            <FajrPrayer/>
+            <Text>
+                Fajr time: <FajrPrayer/> 
+            </Text>
+
         </NextPrayerView>
 
         <NextPrayerView style={styles.nextPrayerViewM}>
@@ -65,7 +68,7 @@ const NextPrayerLayout = ({ style }) =>
 //need to implement navigate here later
 const HomeView = (props) =>
 {
-    const ViewWrapper =  Platform.OS === 'ios' ? SafeAreaView : View;
+    const ViewWrapper =  Platform.OS === 'ios' ? SafeAreaView : View; //ViewWrapper returns custom view component depending on OS
 
     return (
         <ViewWrapper style={styles.homeContainer}>

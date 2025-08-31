@@ -28,7 +28,7 @@ export const NextPrayerContainer = ({ style, children }) => {
     );
 };
 
-export const FajrPrayer = ( {textStyle} ) => {
+export const FajrPrayer = ( {textStyle, children} ) => {
     const calculatePrayerFajr = React.useMemo(() =>
     {
         const date = new Date();
@@ -39,11 +39,7 @@ export const FajrPrayer = ( {textStyle} ) => {
         return dayjs(prayerTime.fajr).format('h:mm A');
     },[date, coordinates]);
     
-    return (
-        <Text style={textStyle}>
-            {`Fajr prayer: ${calculatePrayerFajr}`}
-        </Text>
-    );
+    return calculatePrayerFajr;
 };
 
 
