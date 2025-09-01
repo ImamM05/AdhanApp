@@ -3,7 +3,13 @@ import * as adhan from 'adhan';
 import dayjs from 'dayjs';
 import { View } from 'react-native';
 
+
+// const latitude = gets latitude
+// const longitude = gets longitude 
+
+//coordinate will be set using React.useMemo() with latitude and longitude in the dependency array
 const coordinates = new adhan.Coordinates('40.68772', '-73.80342');
+
 const date = new Date();
 const param = adhan.CalculationMethod.MuslimWorldLeague();
 param.madhab = adhan.Madhab.Hanafi;
@@ -28,11 +34,10 @@ export const NextPrayerContainer = ({ style, children }) => {
     );
 };
 
-export const FajrPrayer = ( {textStyle, children} ) => {
+export const FajrPrayer = ( {textStyle} ) => {
+
     const calculatePrayerFajr = React.useMemo(() =>
     {
-        const date = new Date();
-        const coordinates = new adhan.Coordinates('40.68772', '-73.80342');
         const param = adhan.CalculationMethod.MuslimWorldLeague();
         const prayerTime = new adhan.PrayerTimes(coordinates, date, param);
 
@@ -40,6 +45,18 @@ export const FajrPrayer = ( {textStyle, children} ) => {
     },[date, coordinates]);
     
     return calculatePrayerFajr;
+};
+
+export const IshaPrayer = ( {textStyle} ) => {
+
+    const calculatePrayerIsha = React.useMemo(() => {
+        const param = adhan.CalculationMethod.MuslimWorldLeague();
+        const prayerTime = new adhan.PrayerTimes(coordinates, date, param);
+
+        return dayjs(prayerTime.isha).format('h:mm A');
+    },[date, coordinates]);
+
+    return calculatePrayerIsha;
 };
 
 

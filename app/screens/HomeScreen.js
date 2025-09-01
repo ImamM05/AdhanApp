@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, SafeAreaView, Platform, ScrollView } from 'react-native';
-import { FajrPrayer, NextPrayerContainer, NextPrayerView } from '../../packages/src/PrayerTimes';
+import { FajrPrayer, IshaPrayer, NextPrayerContainer, NextPrayerView } from '../../packages/src/PrayerTimes';
 
 
 const PrayerCard = (props) =>
@@ -58,7 +58,10 @@ const NextPrayerLayout = ({ style }) =>
         </NextPrayerView>
 
         <NextPrayerView style={styles.nextPrayerViewE}>
-            <Text>Isha</Text>
+            <Text>
+                Isha time : <IshaPrayer/>
+
+            </Text>
         </NextPrayerView>
     </NextPrayerContainer>
     );
